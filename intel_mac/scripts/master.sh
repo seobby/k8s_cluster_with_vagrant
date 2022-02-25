@@ -2,7 +2,7 @@
 
 sudo hostnamectl set-hostname master
 
-MASTER_IP=`ifconfig |grep 192.168|awk '{print $2}'`
+MASTER_IP=`ifconfig |grep 192.168.137|awk '{print $2}'`
 NODENAME=$(hostname -s)
 POD_CIDR="10.100.0.0/16"
 
