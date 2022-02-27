@@ -8,6 +8,7 @@ RUNNER_HOME=$(eval echo "~$RUNNER")
 sudo -i -u $RUNNER bash << EOF
 mkdir -p $RUNNER_HOME/.kube
 sudo cp -i /vagrant/configs/config $RUNNER_HOME/.kube/
+sudo chown -R $(su - $RUNNER -c "id -u"):$(su - $RUNNER -c "id -g") $RUNNER_HOME/.kube
 sudo chown $(su - $RUNNER -c "id -u"):$(su - $RUNNER -c "id -g") $RUNNER_HOME/.kube/config
 kubectl label node $(hostname -s) node-role.kubernetes.io/worker=worker-new
 EOF

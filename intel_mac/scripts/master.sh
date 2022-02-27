@@ -19,6 +19,7 @@ sudo kubeadm init --apiserver-advertise-address=$MASTER_IP  --apiserver-cert-ext
 # configuration setup for normal user (RUNNER)
 mkdir -p $RUNNER_HOME/.kube
 sudo cp -i /etc/kubernetes/admin.conf $RUNNER_HOME/.kube/config
+sudo chown -R $(su - $RUNNER -c "id -u"):$(su - $RUNNER -c "id -g") $RUNNER_HOME/.kube
 sudo chown $(su - $RUNNER -c "id -u"):$(su - $RUNNER -c "id -g") $RUNNER_HOME/.kube/config
 
 export KUBECONFIG=/etc/kubernetes/admin.conf
